@@ -3,13 +3,16 @@
   "name": "Dyslexic Reader",
   "version": "1.0",
   "description": "Replace all web fonts with OpenDyslexic",
+  "permissions": ["storage", "activeTab", "scripting", "notifications"],
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
       "matches": [
-        "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
+        "<all_urls>"
       ]
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "./popup.html"
+  }
 }
