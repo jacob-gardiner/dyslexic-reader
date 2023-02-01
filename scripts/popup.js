@@ -1,22 +1,26 @@
 console.log('snickers');
 
-
-
 (async () => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-    document.querySelector('.donkey').addEventListener('click', (e) => {
-        chrome.scripting.executeScript({
+    document.getElementById('toggle').addEventListener('click', async (e) => {
+        const result = await chrome.storage.local.get("enabled");
+        await chrome.storage.local.set({enabled: !result.enabled});
+
+        if (result.enabled) {
+            document.querySelector('#toggle').innerText = 'Disabled';
+        } else {
+            document.querySelector('#toggle').innerText = 'Enabled';
+        }
+
+        await chrome.scripting.executeScript({
             args: [],
             target: { tabId: tab.id },
-            function: dealWithDonkey,
+            function: toggle,
         });
     })
 })()
 
-const dealWithDonkey = async () => {
-    const result = await chrome.storage.local.get("enabled");
-    console.log(result);
-    await chrome.storage.local.set({enabled: !result.enabled});
+const toggle = async () => {
     window.location.reload();
 }
