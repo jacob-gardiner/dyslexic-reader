@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dyslexic Reader</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/open-dyslexic');
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            font-family: 'Open-Dyslexic', sans-serif;
+        }
+
+        body {
+            padding: 0 0.5rem;
+        }
+
+        .toggle {
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .toggle-switch {
+            display: inline-block;
+            background: #ccc;
+            border-radius: 16px;
+            width: 58px;
+            height: 32px;
+            position: relative;
+            vertical-align: middle;
+            transition: background 0.25s;
+
+            &:before,
+            &:after {
+                content: "";
+            }
+
+            &:before {
+                display: block;
+                background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+                border-radius: 50%;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+                width: 24px;
+                height: 24px;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                transition: left 0.25s;
+            }
+
+            .toggle:hover &:before {
+                background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+            }
+
+            .toggle-checkbox:checked + & {
+                background: #56c080;
+
+                &:before {
+                    left: 30px;
+                }
+            }
+        }
+
+        .toggle-checkbox {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        .toggle-label {
+            position: relative;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Dyslexic Reader</h1>
+<div class="wrapper">
+    <label class="toggle">
+        <span class="toggle-label">Enabled</span>
+        <input id="toggle" class="toggle-checkbox" type="checkbox" checked>
+        <div class="toggle-switch"></div>
+    </label>
+</div>
+</body>
+<script src="scripts/popup.js"></script>
+</html>
