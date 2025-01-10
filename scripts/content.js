@@ -1,12 +1,13 @@
-const allElements = document.querySelectorAll('*:not(i)');
+const cssSelector = '*:not(i):not([aria-hidden="true"])';
+const allElements = document.querySelectorAll(cssSelector);
 
 const openDyslexic = new FontFace('Open-Dyslexic', 'url(https://fonts.cdnfonts.com/s/29616/open-dyslexic.woff)');
 
 const shouldAlterContent = async () => {
     const {enabled} = await chrome.storage.local.get("enabled")
-
     return enabled;
 }
+
 const changeContent = (targets) => {
     openDyslexic.load().then(() => {
         document.fonts.add(openDyslexic);
@@ -37,7 +38,7 @@ const targetNode = document.querySelector('body');
 const config = { childList: true, subtree: true};
 
 const callback = async (mutationList, observer) => {
-    const targets = document.querySelectorAll('*:not(i)');
+    const targets = document.querySelectorAll(cssSelector);
     if (await shouldAlterContent()) {
         changeContent(targets)
     }
