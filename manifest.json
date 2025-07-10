@@ -3,13 +3,22 @@
   "name": "Dyslexic Reader",
   "version": "1.0",
   "description": "Replace all web fonts with OpenDyslexic",
+  "permissions": ["storage", "scripting"],
+  "icons": {
+    "16": "img/OpenDyslexicIconOFF16.png",
+    "32": "img/OpenDyslexicIconOFF32.png",
+    "48": "img/OpenDyslexicIconOFF64.png",
+    "128": "img/OpenDyslexicIconOFF128.png"
+  },
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
       "matches": [
-        "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
+        "https://*/*"
       ]
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "./popup.html"
+  }
 }
