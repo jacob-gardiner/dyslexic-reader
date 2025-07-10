@@ -14,21 +14,24 @@
         }
 
         body {
-            padding: 0 0.5rem;
+            padding: 0.75rem;
+            min-width: 200px;
         }
 
         .toggle {
             cursor: pointer;
-            display: inline-block;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             text-align: center;
         }
 
         .toggle-switch {
             display: inline-block;
             background: #ccc;
-            border-radius: 16px;
-            width: 58px;
-            height: 32px;
+            border-radius: 12px;
+            width: 42px;
+            height: 22px;
             position: relative;
             vertical-align: middle;
             transition: background 0.25s;
@@ -43,11 +46,11 @@
                 background: linear-gradient(to bottom, #fff 0%, #eee 100%);
                 border-radius: 50%;
                 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-                width: 24px;
-                height: 24px;
+                width: 16px;
+                height: 16px;
                 position: absolute;
-                top: 4px;
-                left: 4px;
+                top: 3px;
+                left: 3px;
                 transition: left 0.25s;
             }
 
@@ -60,7 +63,7 @@
                 background: #56c080;
 
                 &:before {
-                    left: 30px;
+                    left: 23px;
                 }
             }
         }
@@ -73,26 +76,30 @@
         .toggle-label {
             position: relative;
             display: block;
-            margin-bottom: 10px;
             font-size: 1rem;
         }
 
         h1 {
-            text-align: center;
+            text-align: left;
+            font-size: 1.1rem;
+            margin: 0 0 0.75rem 0;
+            white-space: nowrap;
         }
-        .wrapper {
-            display: flex;
-            justify-content: center;
+
+        hr {
+            opacity: 0.4;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
 <h1>Dyslexic Reader</h1>
+<hr>
 <div class="wrapper">
     <label class="toggle">
         <span class="toggle-label">Enabled</span>
         <input id="toggle" class="toggle-checkbox" type="checkbox" checked>
-        <div class="toggle-switch"></div>
+        <span class="toggle-switch"></span>
     </label>
 </div>
 </body>
